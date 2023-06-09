@@ -4,7 +4,6 @@ To start the project locally, please clone the repositry.
 
 ```
 git clone https://github.com/AlmajedA/blog.git
-
 ```
 
 then run the following in the terminal where the folder is located:
