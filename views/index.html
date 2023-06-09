@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block style %}
+
+<title>Home page</title>
+<link rel="stylesheet" href="/css/index.css">
+
+{% endblock %}
+
+{% block main %}
+<main>
+    <div id="content">
+
+        <img src="/images/hero.png" class="img-fluid" alt="">
+        <div class="welcome">
+            <p class="welcome-title">Welcome to The <a class='logo' href="/">Tech Blog</a>...</p>
+            <p class="welcome-desc">The best place to share your knowledge and make the world better</p>
+            <a class="btn" href="/new">Create an Article</a>
+        </div>
+
+    </div>
+
+
+    <div id="main-div" class="en">
+        <h1 class="main-title">All Technical Articles</h1>
+
+        {% for article in articles %}
+
+        <div class="container" id="{{ article.id }}">
+            <div class="like">
+                <img src="/images/editor-icons-2.png" class='like-item' alt="">
+                <p class="like-item">{{ article.author }}</p>
+                <hr class='like-item'>
+                <img class='like-item heart' src="/images/heart-suit.png" alt="">
+                <p class="like-item">{{ article.likes }}</p>
+
+            </div>
+            <div class="detail">
+
+                <header>
+                    <h3 class="article-title">{{ article.title }}</h3>
+                </header>
+
+                <article>
+                    <p class="desc">{{ article.description }}</p>
+                </article>
+
+                <footer>
+                    <a class="btn" href="/article/{{article.id}}">Read Now</a>
+                    <a class="edit" href="/edit/{{article.id}}">Edit</a>
+                    <button class="delete" onclick="deleteArticle(this)">Delete</button>
+                </footer>
+
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+
+</main>
+{% endblock %}

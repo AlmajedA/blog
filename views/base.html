@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    {% block style %}
+    {% endblock %}
+
+
+</head>
+
+
+
+<body>
+    <header>
+        <nav>
+            <div class="logo-div">
+                <a class='logo' href="/">Tech Blog</a>
+            </div>
+
+            <select name="lang" id="lang" onchange="setLanguage(this)">
+                <option value="english">English</option>
+                <option value="arabic">Arabic</option>
+            </select>
+
+        </nav>
+    </header>
+
+
+    {% block main %}
+
+    {% endblock %}
+
+    <footer class="copyright">
+        <p>&copy; The <a class='logo' href="/">Tech Blog</a> 2023 created by 222-SWE-363 Student</p>
+    </footer>
+
+
+    {% block inlineJS %}
+
+    {% endblock %}
+    <!-- javascript folder -->
+    <script src="/js/frontend.js"></script>
+
+
+
+</body>
+
+</html>

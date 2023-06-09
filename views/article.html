@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+{% block style %}
+<title>Article</title>
+<link rel="stylesheet" href="/css/article.css">
+{% endblock %}
+
+
+{% block main %}
+<main>
+    <div id="main-div" class="en">
+        <button onclick="likeArticle()" class="likeBtn">
+            <img src="/images/like-plus.png" alt="">
+            <p class="nLikes">{{detail.likes}}</p>
+        </button>
+
+        <h1 class="title">{{detail.title}}</h1>
+        <h5 class="author">Written by: {{detail.author}}</h5>
+        <h3 class="description">{{detail.description}}</h3>
+        <div id="articleContent">{{content}}</div>
+    </div>
+</main>
+
+
+{% endblock %}
+
+{% block inlineJS %}
+
+
+<script>
+
+    let content = document.querySelector('#articleContent')
+    content.innerHTML = content.textContent;
+
+
+
+</script>
+
+
+{% endblock %}

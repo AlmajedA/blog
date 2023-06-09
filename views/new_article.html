@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block style %}
+
+<title>Create new article</title>
+<link rel="stylesheet" href="/css/new.css">
+<link href="/froala-editor/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/froala-editor/js/froala_editor.pkgd.min.js"></script>
+<script type="text/javascript" src="/froala-editor/js/plugins/image.min.js"></script>
+{% endblock %}
+
+
+{% block main%}
+
+<body onload="initForm()">
+
+
+    <main>
+        <h1 class='title'>Create an article</h1>
+        <div id="main-div" class="en">
+            <form id="form" action="{{action}}" method="post" onsubmit="return validateContent(event);">
+                <label for=" title">Title</label>
+                <input class="input" type="text" name="title" id="title" value="{{detail.title}}" required>
+                <br>
+                <br>
+                <label for="author">Author</label>
+                <input class="input" type="text" id="author" name="author" value="{{detail.author}}" required>
+                <br>
+                <br>
+                <label for="description">Description</label>
+                <textarea class="input" name="description" id="" cols="30" rows="2" id="description"
+                    required>{{detail.description}}</textarea>
+                <br>
+                <br>
+                <label for="content">Content</label>
+                <textarea class="input" name="content" id="content">{{detail.content}}</textarea>
+                <br>
+                <br>
+                <label for="arabic_content">Arabic Content</label>
+                <textarea class="input" name="arabic_content" id="arabic_content">{{detail.arabicContent}}</textarea>
+                <br>
+                <br>
+
+
+                <button type="submit" id="submit">{{type}}</button>
+
+            </form>
+        </div>
+
+
+    </main>
+</body>
+{% endblock %}

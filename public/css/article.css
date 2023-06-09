@@ -1,0 +1,125 @@
+html{
+    font-family: Helvetica;
+}
+
+/* All navbar, body, and footer related css */
+
+body{
+    margin: 0; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+body main{
+    width: 960px;
+    margin: auto;
+    height: 100%;
+}
+
+#main-div.ar{
+    direction: rtl;
+}
+
+nav{
+    background-color: #efeffa;    
+    /* overflow: hidden; */
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+select{
+    margin: auto;
+}
+
+.logo-div{
+    margin: auto;
+}
+
+.logo{
+    margin: 0;
+    border-radius: 2rem;
+    border-width: 1px;
+    border-color: #6d64ff;
+    border-style: solid;
+    padding: 10px;
+    text-decoration: none;
+    background: linear-gradient(to right, #6d64ff, #CF1512);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+
+footer.copyright{
+    margin-top: 20px;
+    background-color: #efeffa;
+    padding: 20px 0;
+    text-align: center;
+
+}
+
+/* end */
+
+.likeBtn{
+    background-color: #313042;
+    border-radius: 1rem;
+    border-width: 3px;
+    border-color: #6d64ff;
+    position: fixed;
+    bottom: 20px;
+    padding: 10px;
+}
+
+#main-div.en .likeBtn{
+    right: 20px;
+}
+
+#main-div.ar .likeBtn{
+    left: 20px;
+}
+
+.likeBtn:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px #6d64ff;
+}
+
+
+
+.nLikes {
+    display: inline;
+    color: #efeffa;
+}
+
+
+
+.title{
+    font-size: 3em;
+}
+
+.subTitle{
+    font-size: 1.5em;
+}   
+
+
+.author{
+    background-color: #efeffa;
+    display: inline;
+    padding: 10px;
+
+}
+
+.description{
+    font-size: 1.25em;
+    color: #6d64ff;
+}
+
+table tr th{
+    background-color: lightgrey;
+}
+
+table, th, td {
+    border: 1px ridge #efeffa;
+    border-collapse: collapse;
+}
