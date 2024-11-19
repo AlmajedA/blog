@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.dir-page {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.window {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.window__header {
+    background-color: #e9ecef;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.window__header__title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.window__content {
+    padding: 15px;
+}
+
+.reader__content {
+    line-height: 1.6;
+}
+
+.window__footer {
+    background-color: #e9ecef;
+    height: 20px;
+}
+
+.url-trail {
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    gap: 5px;
+}
+
+.url-trail__item {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.url-trail__item:hover {
+    text-decoration: underline;
+}
+
+.fm__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fm__dir, .fm__file {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-decoration: none;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+.fm__dir:hover, .fm__file:hover {
+    background-color: #e2e6ea;
+}
+
+.fm__dir.fm--active, .fm__file.fm--active {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.fm__dir__icon, .tl__item__icon {
+    margin-right: 10px;
+}
+
+.fm__dir__name, .fm__file__name, .tl__item__name {
+    flex-grow: 1;
+}
+
+.fm__dir__info, .fm__file__info, .tl__item__info {
+    font-size: 12px;
+    color: #777;
+}
+
+.fm__empty {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+}
+
+.fm__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.fm__pagination__button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.fm__pagination__button:hover {
+    background-color: #0056b3;
+}
+
+.fm__pagination__number {
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+.tl__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tl__item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-decoration: none;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+.tl__item:hover {
+    background-color: #e2e6ea;
+}

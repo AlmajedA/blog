@@ -1,0 +1,154 @@
+body {
+  background-color: #f2e6d9; // Warm, retro beige background
+  color: #2a1a0e; // Text color to match the retro theme
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-image: url('\\assets\\preview6.jpg'); // Suggest a retro pattern image
+  background-size: cover;
+  background-attachment: fixed; // Keeps the background in place as you scroll
+  background-repeat: no-repeat;
+}
+
+
+.dir-page {
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 100px);
+  padding: 8px;
+  grid-gap: 8px;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: start;
+  background-color: #f2e6d9; // Retro beige background
+  border: 2px solid #8b2c24; // Retro accent border
+  border-radius: 8px;
+
+  .window {
+    background-color: #fff8e7; // Light paper-like background
+    border: 2px solid #2a1a0e; // Dark outline for retro contrast
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+
+    &__header {
+      background-color: #d15757; // Retro red header background
+      color: #fff;
+      padding: 5px;
+      font-family: 'Georgia', serif;
+      font-size: 20px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    &__header__title {
+      margin: 0;
+    }
+
+    &__content {
+      font-family: 'Courier New', Courier, monospace;
+      color: #2a1a0e;
+      font-size: large;
+      padding: 10px 5px;
+      line-height: 1.5;
+    }
+
+    &__footer {
+      height: 5px;
+      background-color: #8b2c24; // Accent footer strip
+    }
+  }
+
+  .reader {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+
+  .fm {
+    .fm__dir,
+    .fm__file {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px;
+      border-bottom: 1px dashed #8b2c24;
+      text-decoration: none;
+      color: #2a1a0e;
+
+      &:hover {
+        background-color: #f7d8d8; // Highlight effect
+      }
+    }
+
+    .fm--active {
+      background-color: #d1a1a1; // Active directory/file background
+    }
+
+    .fm__empty {
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      color: #8b2c24;
+    }
+
+    .fm__pagination {
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+
+      &__button {
+        color: #2a1a0e;
+        background-color: #f2e6d9;
+        border: 1px solid #8b2c24;
+        padding: 5px;
+        margin: 0 3px;
+        text-decoration: none;
+
+        &:hover {
+          background-color: #d15757;
+          color: #fff;
+        }
+      }
+
+      &__number {
+        font-family: 'Georgia', serif;
+        margin: 0 5px;
+        color: #2a1a0e;
+      }
+    }
+  }
+
+  .tl {
+    .tl__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px;
+      border-bottom: 1px dashed #8b2c24;
+      text-decoration: none;
+      color: #2a1a0e;
+
+      &:hover {
+        background-color: #f7d8d8;
+      }
+    }
+  }
+
+  .url-trail {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px 0;
+    padding: 5px;
+    background-color: #fff3e0;
+    border: 1px solid #8b2c24;
+
+    &__item {
+      color: #2a1a0e;
+      text-decoration: none;
+      margin-right: 5px;
+
+      &:hover {
+        color: #d15757;
+      }
+    }
+  }
+}
