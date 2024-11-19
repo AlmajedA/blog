@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>{{.Title}}</title>
+
+	{{if ne .Description ""}}
+	<meta name="description" content="{{.Description}}">
+	<meta name="twitter:description" content="{{.Description}}">
+	<meta property="og:description" content="{{.Description}}">
+	{{end}}
+</head>
+
+<body>
+	<div class="file-page">
+		<div class="window reader">
+			<div class="window__header">
+				{{$finalTime := $.UpdateTime}}
+				{{if $finalTime.IsZero}}{{$finalTime = $.CreateTime}}{{end}}
+				<p class="window__header__title">{{.Title}} ({{$finalTime.Format "2/1/06"}})</p>
+			</div>
+			<div class="window__status-bar url-trail file-page__url-trail">
+				{{range $trail := $.PathTrails}}
+				{{if eq $trail.URLPath "/"}}
+				<a href="{{$trail.URLPath}}" class="url-trail__item">&lt;root&gt;</a>
+				{{else if eq $trail.URLPath $.URLPath}}
+				<a href="{{$trail.URLPath}}" class="url-trail__item">&lt;current-file&gt;</a>
+				{{else}}
+				<a href="{{$trail.URLPath}}" class="url-trail__item">{{$trail.Title}}</a>
+				{{end}}
+				{{end}}
+			</div>
+			<div class="window__content reader__content">
+				{{$.Content}}
+
+				{{if gt (len $.Tags) 0}}
+				<div class="reader__tags">
+					<p>Tags:</p>
+					{{range $tag := $.Tags}}
+					<a href="{{$tag.URLPath}}">#{{$tag.Name}}</a>
+					{{end}}
+				</div>
+				{{end}}
+
+				<div class="reader__sibling">
+					{{if ne $.PrevFile.URLPath ""}}
+					<a href="{{$.PrevFile.URLPath}}" class="reader__sibling__prev">{{$.PrevFile.Title}}</a>
+					{{end}}
+					{{if ne $.NextFile.URLPath ""}}
+					<a href="{{$.NextFile.URLPath}}" class="reader__sibling__next">{{$.NextFile.Title}}</a>
+					{{end}}
+				</div>
+			</div>
+			<div class="window__footer"></div>
+		</div>
+	</div>
+</body>
+
+</html>

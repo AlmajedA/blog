@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Metadata and Styles -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Linking CSS files -->
+    <link href="/themes/new_theme/css/index.css" rel="stylesheet">
+
+    <!-- Dynamic Title -->
+    <title>{{.Title}}</title>
+
+    <!-- Conditional Metadata -->
+
+</head>
+
+<body>
+    <div class="dir-page">
+
+        <!-- Reader Window Section -->
+        {{if ne $.Content ""}}
+        <div class="window reader">
+            <!-- Reader Header -->
+            <div class="window__header">
+                <p class="window__header__title">{{$.Title}}</p>
+            </div>
+
+            <!-- Reader Content -->
+            <div class="window__content reader__content">
+                {{$.Content}}
+            </div>
+
+            <!-- Reader Footer -->
+            <div class="window__footer"></div>
+        </div>
+        {{end}}
+
+        <!-- File Manager Section -->
+        <div class="window fm">
+
+            <!-- File Manager Header -->
+            <div class="window__header">
+                <p class="window__header__title">File Manager</p>
+            </div>
+
+            <!-- Breadcrumb Navigation -->
+            <div class="window__status-bar url-trail">
+                {{range $trail := $.PathTrails}}
+                {{if eq $trail.URLPath "/"}}
+                <a href="{{$trail.URLPath}}" class="url-trail__item">&lt;root&gt;</a>
+                {{else}}
+                <a href="{{$trail.URLPath}}" class="url-trail__item">{{$trail.Title}}</a>
+                {{end}}
+                {{end}}
+
+                <!-- Current Page -->
+                {{if gt $.CurrentPage 1}}
+                <a href="" class="url-trail__item">{{$.CurrentPage}}</a>
+                {{end}}
+            </div>
+
+            <!-- File Manager Content -->
+            <div class="window__content fm__content">
+                {{range $item := $.ChildItems}}
+
+                <!-- Determine Active State -->
+                {{$className := ""}}
+                {{if eq $item.URLPath $.URLPath}}
+                {{$className = "fm--active"}}
+                {{end}}
+
+                <!-- Directory Entry -->
+                {{if $item.IsDir}}
+                <a href="{{$item.URLPath}}" class="fm__dir {{$className}}">
+                    <span class="fm__dir__icon"></span>
+                    <span class="fm__dir__name">{{$item.Title}}</span>
+                    <span class="fm__dir__info">{{$item.NChild}} contents</span>
+                </a>
+                {{else}}
+                <!-- File Entry -->
+                <a href="{{$item.URLPath}}" class="fm__file {{$className}}">
+                    <span class="fm__file__name">{{$item.Title}}</span>
+                    {{if not $item.UpdateTime.IsZero}}
+                    <span class="fm__file__info">{{$item.UpdateTime.Format "2/1/06"}}</span>
+                    {{end}}
+                </a>
+                {{end}}
+                {{else}}
+                <!-- Empty Directory -->
+                <div class="fm__empty">
+                    <p>┳┻┳┻|</p>
+                    <p>┻┳┻┳|</p>
+                    <p>┳┻┳┻|</p>
+                    <p>┻┳┻┳|</p>
+                    <p>┳┻┳┻|</p>
+                    <p>┻┳┻┳| Nothing here, just go back...</p>
+                    <p>┳┻┳┻|</p>
+                    <p>┻┳┻┳|</p>
+                    <p>┳┻┳┻|</p>
+                    <p>┻┳┻┳|</p>
+                    <p>┳┻┳┻|</p>
+                </div>
+                {{end}}
+            </div>
+
+            <!-- Pagination Section -->
+            {{if gt $.MaxPage 1}}
+            <div class="fm__pagination">
+
+                <!-- First and Previous Buttons -->
+                {{if gt $.CurrentPage 2}}
+                <a href="{{paginationLink $.URLPath 1}}" class="fm__pagination__button">&lt;&lt;</a>
+                {{end}}
+                {{if gt $.CurrentPage 1}}
+                <a href="{{paginationLink $.URLPath (sub $.CurrentPage 1)}}" class="fm__pagination__button">&lt;</a>
+                {{end}}
+
+                <!-- Current Page Display -->
+                <p class="fm__pagination__number">{{$.CurrentPage}} / {{$.MaxPage}}</p>
+
+                <!-- Next and Last Buttons -->
+                {{if lt $.CurrentPage $.MaxPage}}
+                <a href="{{paginationLink $.URLPath (add $.CurrentPage 1)}}" class="fm__pagination__button">&gt;</a>
+                {{end}}
+                {{if lt $.CurrentPage (sub $.MaxPage 1)}}
+                <a href="{{paginationLink $.URLPath $.MaxPage}}" class="fm__pagination__button">&gt;&gt;</a>
+                {{end}}
+            </div>
+            {{end}}
+
+            <!-- File Manager Footer -->
+            <div class="window__footer"></div>
+        </div>
+
+        <!-- Tag List Section -->
+        {{if gt (len $.ChildTags) 0}}
+        <div class="window tl">
+
+            <!-- Tag List Header -->
+            <div class="window__header">
+                <p class="window__header__title">Tag List</p>
+            </div>
+
+            <!-- Tag List Content -->
+            <div class="window__content tl__content">
+                {{range $tag := $.ChildTags}}
+                <a href="{{$tag.URLPath}}" class="tl__item">
+                    <span class="tl__item__icon"></span>
+                    <span class="tl__item__name">{{$tag.Name}}</span>
+                    <span class="tl__item__info">{{$tag.Count}} files</span>
+                </a>
+                {{end}}
+            </div>
+
+            <!-- Tag List Footer -->
+            <div class="window__footer"></div>
+        </div>
+        {{end}}
+    </div>
+</body>
+
+</html>
